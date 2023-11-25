@@ -17,6 +17,8 @@ public class Pa2U1P5PsApplication implements CommandLineRunner{
 		System.out.println("Soy Pablo Simbaña");
 		System.out.println("cambio en la misma rama");
 		System.out.println("cambio en una nueva rama");
+		System.out.println("Cambio en una nueva rama Taller4");
+		System.out.println("Cambio taller4v2");
 	}
 
 }
