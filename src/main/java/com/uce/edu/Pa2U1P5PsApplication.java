@@ -15,10 +15,7 @@ public class Pa2U1P5PsApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		System.out.println("Hola mundo");
 		System.out.println("Soy Pablo Simbaña");
-		System.out.println("cambio en la misma rama");
-		System.out.println("cambio en una nueva rama");
-		System.out.println("Cambio en una nueva rama Taller4");
-		System.out.println("Cambio taller4v2");
+		System.out.println( "Cambio taller4 " );
 	}
 
 }
