@@ -12,12 +12,16 @@ public class CuentaBancariaRepositoryImp implements ICuentaBancariaRepository {
 	public static List<CuentaBancaria> base = new ArrayList<CuentaBancaria>();
 	@Override
 	public CuentaBancaria seleccionar(String numero) {
-		for(CuentaBancaria cta: base) {
-			if(cta.getNumero().equals(numero))
+		for(CuentaBancaria cuenta: base) {
+			if(cuenta.getNumero().equals(numero)) {
+				CuentaBancaria cta = new CuentaBancaria();
+				cta.setCedulaPropietario(cuenta.getCedulaPropietario());
+				cta.setNumero(cuenta.getNumero());
+				cta.setSaldo(cuenta.getSaldo());
 				return cta;
-			return null;
+			}
 		}
-		return new CuentaBancaria();
+		return null;
 	}
 
 	@Override
