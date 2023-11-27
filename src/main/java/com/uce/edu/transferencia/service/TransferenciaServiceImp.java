@@ -76,11 +76,18 @@ public class TransferenciaServiceImp implements ITransferenciaService {
 			transferencia.setNumero("121212121");
 			this.iTransferenciaRepository.insertar(transferencia);
 			System.out.println("Transferencia realizada con exito");
+			this.iTransferenciaRepository.insertarTransferencia();
+			
 			
 		}else{
 			System.out.println("Saldo no disponible");
 		}
 
+	}
+
+	@Override
+	public Integer buscarTodasTransferencias() {
+		return this.iTransferenciaRepository.seleccionarTodasTransferencias();
 	}
 
 }

@@ -10,6 +10,8 @@ import com.uce.edu.transferencia.repository.modelo.Transferencia;
 public class TransferenciaRepositoryImp implements ITransferenciaRepository {
 
 	public static List<Transferencia> base = new ArrayList<Transferencia>();
+	public static Integer numeroTransacciones =0;
+
 	@Override
 	public Transferencia seleccionar(String numero) {
 		for(Transferencia transf: base) {
@@ -22,8 +24,8 @@ public class TransferenciaRepositoryImp implements ITransferenciaRepository {
 
 	@Override
 	public void insertar(Transferencia transf) {
-		base.add(transf);
-		
+		base.add(transf); 
+
 	}
 
 	@Override
@@ -40,5 +42,14 @@ public class TransferenciaRepositoryImp implements ITransferenciaRepository {
 
 	}
 
+	@Override
+	public void insertarTransferencia() {
+		numeroTransacciones++;
+	}
+
+	@Override
+	public Integer seleccionarTodasTransferencias() {
+		return numeroTransacciones;
+	}
 
 }

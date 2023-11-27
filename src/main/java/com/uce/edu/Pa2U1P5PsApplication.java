@@ -27,7 +27,7 @@ public class Pa2U1P5PsApplication implements CommandLineRunner{
 		CuentaBancaria ctaOrigen = new CuentaBancaria();
 		ctaOrigen.setCedulaPropietario("1752245041");
 		ctaOrigen.setNumero("1234");
-		ctaOrigen.setSaldo(new BigDecimal(100));
+		ctaOrigen.setSaldo(new BigDecimal(200));
 		this.iCuentaBancariaService.guardar(ctaOrigen);
 		
 		CuentaBancaria ctaDestino = new CuentaBancaria();
@@ -37,13 +37,21 @@ public class Pa2U1P5PsApplication implements CommandLineRunner{
 		this.iCuentaBancariaService.guardar(ctaDestino);
 		
 		this.iTransferenciaService.realizar("1234", "5678", new BigDecimal(20));
-		//System.out.println(ctaOrigen);
-		//System.out.println(ctaDestino);
+		this.iTransferenciaService.realizar("1234", "5678", new BigDecimal(20));
+		this.iTransferenciaService.realizar("1234", "5678", new BigDecimal(20));
+		this.iTransferenciaService.realizar("1234", "5678", new BigDecimal(20));
+		this.iTransferenciaService.realizar("1234", "5678", new BigDecimal(20));
+		this.iTransferenciaService.realizar("1234", "5678", new BigDecimal(100));
+		this.iTransferenciaService.realizar("1234", "5678", new BigDecimal(20));
+		
 		CuentaBancaria ctaOrigen1 = this.iCuentaBancariaService.buscar("1234");
 		System.out.println(ctaOrigen1);
 		
 		CuentaBancaria ctaDestino1 = this.iCuentaBancariaService.buscar("5678");
 		System.out.println(ctaDestino1);
-		
+
+		System.out.println("Reporte transferencias");
+		Integer reporte = this.iTransferenciaService.buscarTodasTransferencias();
+		System.out.println("Total transferencias realizadas: "+reporte);
 	}
 }

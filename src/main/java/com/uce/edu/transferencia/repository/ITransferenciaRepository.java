@@ -7,5 +7,7 @@ public interface ITransferenciaRepository {
 	public void insertar(Transferencia transf);
 	public void actualizar(Transferencia transf);
 	public void eliminar(String numero);
+	public void insertarTransferencia();
+	public Integer seleccionarTodasTransferencias();
 	
 }

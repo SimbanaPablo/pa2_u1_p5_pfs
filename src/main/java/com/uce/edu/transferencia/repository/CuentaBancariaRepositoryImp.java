@@ -18,7 +18,7 @@ public class CuentaBancariaRepositoryImp implements ICuentaBancariaRepository {
 				cta.setCedulaPropietario(cuenta.getCedulaPropietario());
 				cta.setNumero(cuenta.getNumero());
 				cta.setSaldo(cuenta.getSaldo());
-				return cta;
+				return cuenta;
 			}
 		}
 		return null;
