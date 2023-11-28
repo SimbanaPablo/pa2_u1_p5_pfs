@@ -11,5 +11,5 @@ public interface ITransferenciaService {
 	public void actualizar(Transferencia transf);
 	public void eliminar(String numero);
 	public void realizar(String numeroOrigen,String numeroDestino,BigDecimal monto);
-	public Integer buscarTodasTransferencias();
+	public List<Transferencia> mostrarTransferencias();
 }

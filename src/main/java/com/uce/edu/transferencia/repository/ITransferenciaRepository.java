@@ -1,5 +1,7 @@
 package com.uce.edu.transferencia.repository;
 
+import java.util.List;
+
 import com.uce.edu.transferencia.repository.modelo.Transferencia;
 
 public interface ITransferenciaRepository {
@@ -7,7 +9,6 @@ public interface ITransferenciaRepository {
 	public void insertar(Transferencia transf);
 	public void actualizar(Transferencia transf);
 	public void eliminar(String numero);
-	public void insertarTransferencia();
-	public Integer seleccionarTodasTransferencias();
+	public List<Transferencia> totalTransferencias(); 
 	
 }
