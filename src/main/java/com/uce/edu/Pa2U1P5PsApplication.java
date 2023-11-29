@@ -17,12 +17,32 @@ import com.uce.edu.transferencia.service.ITransferenciaService;
 public class Pa2U1P5PsApplication implements CommandLineRunner{
 	@Autowired
 	private ITransferenciaService iTransferenciaService;
+	
 	@Autowired
 	private ICuentaBancariaService iCuentaBancariaService;
-
+	
+	
+	/* DI por metodo (set)
+	private ITransferenciaService iTransferenciaService;
+	
+	@Autowired
+	public void setiTransferenciaService(ITransferenciaService iTransferenciaService) {
+		this.iTransferenciaService = iTransferenciaService;
+	}
+	
+	/* DI por constructor
+	private ITransferenciaService iTransferenciaService;
+	
+	@Autowired
+	public Pa2U1P5PsApplication(ITransferenciaService iTransService) {
+		this.iTransferenciaService = iTransService;
+	}
+	*/
+	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U1P5PsApplication.class, args);
 	}
+	
 
 	@Override
 	public void run(String... args) throws Exception {
