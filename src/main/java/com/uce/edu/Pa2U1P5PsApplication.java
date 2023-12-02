@@ -1,81 +1,59 @@
 package com.uce.edu;
 
-import java.math.BigDecimal;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.uce.edu.transferencia.repository.modelo.CuentaBancaria;
-import com.uce.edu.transferencia.repository.modelo.Transferencia;
-import com.uce.edu.transferencia.service.ICuentaBancariaService;
-import com.uce.edu.transferencia.service.ITransferenciaService;
+import com.uce.edu.inventario.repository.modelo.Bodega;
+import com.uce.edu.inventario.repository.modelo.Producto;
+import com.uce.edu.inventario.service.IBodegaService;
+import com.uce.edu.inventario.service.IInventarioService;
+import com.uce.edu.inventario.service.IProductoService;
 
 @SpringBootApplication
-public class Pa2U1P5PsApplication implements CommandLineRunner{
+public class Pa2U1P5PsApplication implements CommandLineRunner {
 	@Autowired
-	private ITransferenciaService iTransferenciaService;
-	
+	private IProductoService iProductoService;
 	@Autowired
-	private ICuentaBancariaService iCuentaBancariaService;
-	
-	
-	/* DI por metodo (set)
-	private ITransferenciaService iTransferenciaService;
-	
+	private IInventarioService inventarioService;
 	@Autowired
-	public void setiTransferenciaService(ITransferenciaService iTransferenciaService) {
-		this.iTransferenciaService = iTransferenciaService;
-	}
-	
-	/* DI por constructor
-	private ITransferenciaService iTransferenciaService;
-	
-	@Autowired
-	public Pa2U1P5PsApplication(ITransferenciaService iTransService) {
-		this.iTransferenciaService = iTransService;
-	}
-	*/
-	
+	private IBodegaService bodegaService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2U1P5PsApplication.class, args);
 	}
-	
 
 	@Override
 	public void run(String... args) throws Exception {
-		CuentaBancaria ctaOrigen = new CuentaBancaria();
-		ctaOrigen.setCedulaPropietario("1752245041");
-		ctaOrigen.setNumero("1234");
-		ctaOrigen.setSaldo(new BigDecimal(100));
-		this.iCuentaBancariaService.guardar(ctaOrigen);
-		
-		CuentaBancaria ctaDestino = new CuentaBancaria();
-		ctaDestino.setCedulaPropietario("1743126709");
-		ctaDestino.setNumero("5678");
-		ctaDestino.setSaldo(new BigDecimal(100));
-		this.iCuentaBancariaService.guardar(ctaDestino);
-		
-		this.iTransferenciaService.realizar("1234", "5678", new BigDecimal(30));
-		int indice = 0;
-		List<Transferencia> reporte = this.iTransferenciaService.mostrarTransferencias();
-		for(Transferencia trans:reporte) {
-			indice++;
-			System.out.println(indice+":"+trans);
-		}
-		
+		Producto p1 = new Producto();
+		p1.setCodigoBarras("123455");
+		p1.setNombre("HP 15 Laptop");
+		p1.setStock(0);
+		this.iProductoService.guardar(p1);
 
-		
-		this.iCuentaBancariaService.transferencia("1234",new BigDecimal(100));
-		
-		CuentaBancaria ctaOrigen1 = this.iCuentaBancariaService.buscar("1234");
-		System.out.println(ctaOrigen1);
-		
-		CuentaBancaria ctaDestino1 = this.iCuentaBancariaService.buscar("5678");
-		System.out.println(ctaDestino1);
-		
+		Producto p2 = new Producto();
+		p2.setCodigoBarras("123456");
+		p2.setNombre("DELL 15 Laptop");
+		p2.setStock(0);
+		this.iProductoService.guardar(p2);
+
+		Bodega b1 = new Bodega();
+		b1.setCapacidad(100);
+		b1.setCodigo("121212");
+		b1.setDireccion("America");
+		b1.setNombre("Bodega1");
+		this.bodegaService.guardar(b1);
+
+		this.inventarioService.registrar("121212", "123455", 50);
+		this.inventarioService.registrar("121212", "123456", 100);
+		this.inventarioService.registrar("121212", "123455", 20);
+
+		System.out.println("Reporte");
+		Producto pro1 = this.iProductoService.buscar("123455");
+		Producto pro2 = this.iProductoService.buscar("123456");
+		System.out.println(pro1);
+		System.out.println(pro2);
 
 	}
 }
